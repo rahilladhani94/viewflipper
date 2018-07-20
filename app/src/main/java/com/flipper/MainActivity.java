@@ -68,8 +68,8 @@ public class MainActivity extends Activity implements OnGestureListener {
     }
 
     private void idMapping() {
-        ll = findViewById(R.id.ll);
-        tv = findViewById(R.id.txtStatus);
+        ll = (RelativeLayout) findViewById(R.id.ll);
+        tv = (TextView) findViewById(R.id.txtStatus);
         previous = findViewById(R.id.previous);
         next = findViewById(R.id.next);
 
