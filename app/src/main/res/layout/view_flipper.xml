@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/LinearLayout01"
+    android:layout_width="fill_parent"
+
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:id="@+id/playprevious"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/playnext"
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher"/>
+    </RelativeLayout>
+
+
+<LinearLayout
+    android:id="@+id/llmain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <!--adding views to ViewFlipper-->
+
+        <TextView
+            android:layout_margin="20dp"
+            android:textSize="25sp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First view is now displayed">
+
+        </TextView>
+
+    </ViewFlipper>
+</LinearLayout>
+
+
+</LinearLayout>
