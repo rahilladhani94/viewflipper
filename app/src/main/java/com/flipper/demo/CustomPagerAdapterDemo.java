@@ -1,29 +1,30 @@
-package com.flipper.adapter;
+package com.flipper.demo;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.CountDownTimer;
+import android.graphics.Typeface;
 import android.support.v4.view.PagerAdapter;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.flipper.Database.Contact;
 import com.flipper.R;
 import com.flipper.model.DataModel;
 
 import java.util.ArrayList;
 
-public class CustomPagerAdapter extends PagerAdapter{
+public class CustomPagerAdapterDemo extends PagerAdapter{
     Context context;
-    int images[];
+
     LayoutInflater layoutInflater;
-    ArrayList<DataModel> dataModels;
+    ArrayList<Contact> dataModels;
 
 
-    public CustomPagerAdapter(Context context,ArrayList<DataModel> dataModels) {
+    public CustomPagerAdapterDemo(Context context, ArrayList<Contact> dataModels) {
         this.context = context;
         this.dataModels = dataModels;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -48,7 +49,16 @@ public class CustomPagerAdapter extends PagerAdapter{
 
         txt.setText(dataModels.get(position).getStatus());
 
-        txt.setTextColor(Color.parseColor(dataModels.get(position).getTextcolor()));
+        int size = Integer.parseInt(dataModels.get(position).getTextsize());
+        txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, size);// for Italic
+
+        if(dataModels.get(position).getFontstyle().equalsIgnoreCase("b")){
+            txt.setTypeface(null, Typeface.BOLD);
+
+        }
+        else if(dataModels.get(position).getFontstyle().equalsIgnoreCase("i")){
+            txt.setTypeface(null, Typeface.ITALIC);
+        }
         ll.setBackgroundColor(Color.parseColor(dataModels.get(position).getBgcolor()));
 
 

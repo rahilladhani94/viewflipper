@@ -1,4 +1,4 @@
-package com.flipper;
+package com.flipper.demo;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -7,21 +7,19 @@ import android.os.CountDownTimer;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.flipper.Database.Contact;
 import com.flipper.Database.DatabaseHandler;
+import com.flipper.R;
+import com.flipper.StatusLisActivity;
 import com.flipper.adapter.CustomPagerAdapter;
 import com.flipper.adapter.DataBaseAdapter;
 import com.flipper.model.DataModel;
@@ -29,7 +27,7 @@ import com.flipper.model.DataModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewpagerActivity extends Activity {
+public class ViewpagerActivityDemo extends Activity {
     protected GestureDetector gestureScanner;
     protected ViewFlipper vf;
     private static final int SWIPE_MIN_DISTANCE = 120;
@@ -54,12 +52,11 @@ public class ViewpagerActivity extends Activity {
     SeekBar seekBar;
     ProgressBar pb;
     int i  = 0;
-    ArrayList<DataModel> dataModels;
     ViewPager viewpager;
-    CustomPagerAdapter myCustomPagerAdapter;
+    CustomPagerAdapterDemo myCustomPagerAdapter;
     RelativeLayout rl,left,right;
     DatabaseHandler db;
-    List<Contact> contacts;
+    ArrayList<Contact> contacts;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,7 +92,7 @@ public class ViewpagerActivity extends Activity {
                 if(previuos>=0){
                     viewpager.setCurrentItem(previuos);
                     i=0;
-                    rl.setBackgroundColor(Color.parseColor(dataModels.get(previuos).getBgcolor()));
+                    rl.setBackgroundColor(Color.parseColor(contacts.get(previuos).getBgcolor()));
 
 
                 }
@@ -111,10 +108,10 @@ public class ViewpagerActivity extends Activity {
                 //Toast.makeText(ViewpagerActivity.this,"right",Toast.LENGTH_SHORT).show();
 
                 int next = viewpager.getCurrentItem()+1;
-                if(next<dataModels.size()){
+                if(next<contacts.size()){
                     viewpager.setCurrentItem(next);
                     i=0;
-                    rl.setBackgroundColor(Color.parseColor(dataModels.get(next).getBgcolor()));
+                    rl.setBackgroundColor(Color.parseColor(contacts.get(next).getBgcolor()));
 
                 }
 
@@ -122,22 +119,15 @@ public class ViewpagerActivity extends Activity {
         });
     }
     private void setArray() {
-//        dataModels= new ArrayList<>();
-//
-//        dataModels.add(new DataModel("Hello 1", "#85C226","#000000"));
-//        dataModels.add(new DataModel("2 test viewflippeer", "#ff0000","#ffffff"));
-//
-//        dataModels.add(new DataModel("3 test demo", "#df4914","#000000"));
-//        dataModels.add(new DataModel("4 gfgdf", "#9965a1ff","#373151"));
 
+        contacts = (ArrayList<Contact>) db.getAllContacts();
 
-
-        myCustomPagerAdapter = new CustomPagerAdapter(ViewpagerActivity.this, dataModels);
+        myCustomPagerAdapter = new CustomPagerAdapterDemo(ViewpagerActivityDemo.this, contacts);
         viewpager.setAdapter(myCustomPagerAdapter);
 
         pos=0;
         viewpager.setCurrentItem(0);
-        rl.setBackgroundColor(Color.parseColor(dataModels.get(0).getBgcolor()));
+        rl.setBackgroundColor(Color.parseColor(contacts.get(0).getBgcolor()));
 
 
 
@@ -158,10 +148,10 @@ public class ViewpagerActivity extends Activity {
                 if(i>=100){
 
                     int next = viewpager.getCurrentItem()+1;
-                    if(next<dataModels.size()){
+                    if(next<contacts.size()){
                         viewpager.setCurrentItem(next);
                         i=0;
-                        rl.setBackgroundColor(Color.parseColor(dataModels.get(next).getBgcolor()));
+                        rl.setBackgroundColor(Color.parseColor(contacts.get(next).getBgcolor()));
 
                     }
 
@@ -188,7 +178,7 @@ public class ViewpagerActivity extends Activity {
                 Log.e("pos",""+position);
                 i=0;
                 pos = position;
-                rl.setBackgroundColor(Color.parseColor(dataModels.get(pos).getBgcolor()));
+                rl.setBackgroundColor(Color.parseColor(contacts.get(pos).getBgcolor()));
 
                 // Check if this is the page you want.
             }

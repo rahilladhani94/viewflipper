@@ -5,28 +5,109 @@
     android:layout_height="match_parent"
    >
 
-
     <RelativeLayout
-        android:padding="10dp"
+        android:background="@color/lightGreen"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="Back"
+            android:layout_centerInParent="true"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 
-        android:layout_centerInParent="true"
+
+    <ScrollView
+
         android:layout_above="@+id/bottom"
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <EditText
-            android:textSize="20sp"
-            android:background="@null"
-            android:text=""
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:layout_centerInParent="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </RelativeLayout>
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/edtText"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:background="@null"
+                android:hint="Type here to create your story..!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </ScrollView>
 
     <RelativeLayout
         android:id="@+id/bottom"
-        android:background="@color/red"
+        android:background="@color/theme_text_color"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtSend"
+            android:layout_margin="5dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:text="SEND"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/bold"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:text="B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/ita"
+                android:layout_marginLeft="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:text="I"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/sizesmall"
+                android:layout_marginLeft="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:text="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/sizelarge"
+                android:layout_marginLeft="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:text="25sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
     </RelativeLayout>
 </RelativeLayout>
