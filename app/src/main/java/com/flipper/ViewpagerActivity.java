@@ -122,13 +122,13 @@ public class ViewpagerActivity extends Activity {
         });
     }
     private void setArray() {
-//        dataModels= new ArrayList<>();
-//
-//        dataModels.add(new DataModel("Hello 1", "#85C226","#000000"));
-//        dataModels.add(new DataModel("2 test viewflippeer", "#ff0000","#ffffff"));
-//
-//        dataModels.add(new DataModel("3 test demo", "#df4914","#000000"));
-//        dataModels.add(new DataModel("4 gfgdf", "#9965a1ff","#373151"));
+        dataModels= new ArrayList<>();
+
+        dataModels.add(new DataModel("Hello 1", "#85C226","#000000"));
+        dataModels.add(new DataModel("2 test viewflippeer", "#ff0000","#ffffff"));
+
+        dataModels.add(new DataModel("3 test demo", "#df4914","#000000"));
+        dataModels.add(new DataModel("4 gfgdf", "#9965a1ff","#373151"));
 
 
 

@@ -1,6 +1,7 @@
 package com.flipper.demo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -64,14 +65,26 @@ public class ViewpagerActivityDemo extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewpager_main);
         db = new DatabaseHandler(this);
-
+        getData();
         idMapping();
+
         setonClick();
         setArray();
 
 
 
        // set();
+    }
+
+    private void getData() {
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+
+
+        if (extras != null) {
+            pos= extras.getInt("position");
+
+        }
     }
 
     private void idMapping() {
@@ -125,9 +138,9 @@ public class ViewpagerActivityDemo extends Activity {
         myCustomPagerAdapter = new CustomPagerAdapterDemo(ViewpagerActivityDemo.this, contacts);
         viewpager.setAdapter(myCustomPagerAdapter);
 
-        pos=0;
-        viewpager.setCurrentItem(0);
-        rl.setBackgroundColor(Color.parseColor(contacts.get(0).getBgcolor()));
+
+        viewpager.setCurrentItem(pos);
+        rl.setBackgroundColor(Color.parseColor(contacts.get(pos).getBgcolor()));
 
 
 

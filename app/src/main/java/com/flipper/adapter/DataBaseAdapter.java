@@ -1,6 +1,7 @@
 package com.flipper.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import com.flipper.Database.Contact;
 import com.flipper.R;
+import com.flipper.ViewpagerActivity;
+import com.flipper.demo.ViewpagerActivityDemo;
 
 import java.util.List;
 
@@ -45,11 +48,19 @@ public class DataBaseAdapter extends RecyclerView.Adapter<DataBaseAdapter.MyView
     }
  
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         Contact movie = moviesList.get(position);
         holder.title.setText(""+movie.getStatus());
 
+        holder.title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent i = new Intent(mcontext, ViewpagerActivityDemo.class);
+                i.putExtra("position",position);
+                mcontext.startActivity(i);
+            }
+        });
     }
  
     @Override

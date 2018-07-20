@@ -1,6 +1,7 @@
 package com.flipper.demo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.view.PagerAdapter;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.flipper.Database.Contact;
 import com.flipper.R;
+import com.flipper.ViewpagerActivity;
 import com.flipper.model.DataModel;
 
 import java.util.ArrayList;

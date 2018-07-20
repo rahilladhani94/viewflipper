@@ -1,10 +1,13 @@
 package com.flipper;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 
 import com.flipper.Database.Contact;
@@ -21,6 +24,7 @@ public class StatusLisActivity extends AppCompatActivity {
     private DataBaseAdapter mAdapter;
     DatabaseHandler db;
     Button btnDelete, btnUpdate;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +40,28 @@ public class StatusLisActivity extends AppCompatActivity {
 
     private void setOnclick() {
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent ii = new Intent(StatusLisActivity.this,CreateStatus.class);
+                startActivity(ii);
+            }
+        });
 
     }
 
     private void init() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        btnDelete = (Button) findViewById(R.id.btnDelete);
-        btnUpdate = (Button) findViewById(R.id.btnUpdate);
+
+        fab = findViewById(R.id.fab);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         List<Contact> contacts = db.getAllContacts();
         mAdapter = new DataBaseAdapter(StatusLisActivity.this, contacts);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -53,9 +71,5 @@ public class StatusLisActivity extends AppCompatActivity {
 
 
         mAdapter.notifyDataSetChanged();
-
-
     }
-
-
 }

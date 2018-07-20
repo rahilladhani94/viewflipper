@@ -82,8 +82,10 @@ public class CreateStatus extends AppCompatActivity {
 
                 db.addContact(new Contact("" + edtText.getText().toString(), ""+strfontstyle ,""+strsontsize,"#C1E7DA"));
 
-                Intent ii =new Intent(CreateStatus.this,ViewpagerActivityDemo.class);
-                startActivity(ii);
+
+                finish();
+//                Intent ii =new Intent(CreateStatus.this,ViewpagerActivityDemo.class);
+//                startActivity(ii);
             }
         });
     }
